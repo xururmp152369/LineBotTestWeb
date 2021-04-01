@@ -237,6 +237,7 @@
 
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
+import axios from "axios";
 export default {
   components: {
     Field,
@@ -263,9 +264,12 @@ export default {
     isRequired(value) {
       return value ? true:"此欄位必填";
     },
-    checkFrom: function(e) {
+    checkForm: function(e) {
       console.log(this.regiestForm);
-      e.preventDefault();
+      axios.post("/api/register", this.regiestForm).then(res => {
+        console.log(res);
+        e.preventDefault();
+      });
     }
   }
 };

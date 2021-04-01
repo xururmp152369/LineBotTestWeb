@@ -1,40 +1,38 @@
 <template>
-    <RegiestForm
-    v-bind:profile="profile" />
+  <RegiestForm 
+  v-bind:profile="profile" />
 </template>
-
 <script>
 import RegiestForm from "./components/RegiestForm.vue";
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
     RegiestForm,
   },
   data() {
     return {
       msg: "",
-      profile: {}
+      profile : {} 
     };
   },
   beforeCreate() {
     // eslint-disable-next-line no-unused-vars
     window.liff
-    .init({
-      liffID: "1655808021-VQ5ZB376",// Use own liffId
-    })
-    .then(() => {
+      .init({
+        liffId: "1655808021-VQ5ZB376", // Use own liffId
+      })
+      .then(() => {
         // Start to use liff's api
-      this.getProfile();
-    })
+        this.getProfile();
+      })
   },
   methods: {
     getProfile: function () {
       window.liff
-      .getProfile()
-      .then((profile) => {
-        this.profile = profile;
-      })
+        .getProfile()
+        .then((profile) => {
+          this.profile = profile;
+        })
     },
   },
 };
