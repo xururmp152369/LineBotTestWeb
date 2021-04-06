@@ -24,7 +24,11 @@ export default {
       .then(() => {
         // Start to use liff's api
         this.getProfile();
+        console.log("Complete");
       })
+      .catch((err) => {
+        console.log(err.code, err.message);
+      });
   },
   methods: {
     getProfile: function () {
@@ -33,6 +37,9 @@ export default {
         .then((profile) => {
           this.profile = profile;
         })
+        .catch((err) => {
+          console.log(err.code, err.message);
+        });
     },
   },
 };
@@ -48,3 +55,5 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+<!--ngrok http -host-header=localhost 8080-->
